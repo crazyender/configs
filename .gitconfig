@@ -1,0 +1,4 @@
+[push]
+	default = simple
+[alias]
+	lg = log --color --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cd) %C(bold blue)<%aN>%Creset' --abbrev-commit --date=short
