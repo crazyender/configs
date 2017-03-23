@@ -1,6 +1,4 @@
 #!/bin/bash
-sudo apt install vim-youcompleteme
-vam install youcompleteme
-echo "let g:ycm_global_ycm_extra_conf = \"~/.vim/.ycm_extra_conf.py\"" >> ~/.vimrc
-cp .ycm_extra_conf.py ~/.vim/.ycm_extra_conf.py
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/liuchengxu/space-vim/master/install.sh)"
+git clone https://github.com/powerline/fonts.git ~/.fonts
+sh ~/.fonts/install.sh
