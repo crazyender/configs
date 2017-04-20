@@ -16,5 +16,10 @@ vim
 
 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --system-libclang
 
-cp ./.vimrc ~/.vimrc
-cp ./.spacevim ~/.spacevim
+cp ./.vimrc ~/
+cp ./.spacevim ~/
+cp ./.tmux.conf ~/
+cp ./.gdbinit ~/
+cp ./.bashrc ~/
+cp ./.gitconfig ~/
+

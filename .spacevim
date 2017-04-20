@@ -26,6 +26,7 @@ function! UserInit()
 
     " Install private plugins
     " Plug 'extr0py/oni'
+    Plug 'vim-scripts/Conque-GDB'
 endfunction
 
 " Put your costom configurations here, e.g., change the colorscheme.
@@ -38,6 +39,13 @@ function! UserConfig()
     let g:clang_format#auto_format_on_insert_leave=0
     let g:clang_format#auto_formatexpr=0
     let g:ycm_confirm_extra_conf = 0
+    map <F10> :call conque_gdb#command("next")<CR>
+    map <F11> :call conque_gdb#command("step")<CR>
+    map <F5> :call conque_gdb#command("continue")<CR>
+    map <leader>l :call conque_gdb#command("info locals")<CR>
+    map <leader>a :call conque_gdb#command("info args")<CR>
+    map <F6> :call conque_gdb#command("run")<CR>
+    map <F7> :call conque_gdb#command("qquit")<CR> 
     autocmd FileType c,cpp setlocal
         \   tabstop=8
         \   shiftwidth=8
