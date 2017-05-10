@@ -27,6 +27,9 @@ function! UserInit()
     " Install private plugins
     " Plug 'extr0py/oni'
     Plug 'vim-scripts/Conque-GDB'
+    Plug 'scrooloose/nerdtree'
+    Plug 'tpope/vim-pathogen'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 endfunction
 
 " Put your costom configurations here, e.g., change the colorscheme.
@@ -48,6 +51,7 @@ function! UserConfig()
     map <F7> :call conque_gdb#command("qquit")<CR>
     set colorcolumn=80
     set mouse-=a
+    map <leader>ft :NERDTreeToggle<CR>
     autocmd FileType c,cpp setlocal
         \   tabstop=8
         \   shiftwidth=8
