@@ -27,16 +27,13 @@ function! UserInit()
     " Install private plugins
     " Plug 'extr0py/oni'
     Plug 'vim-scripts/Conque-GDB'
-    Plug 'scrooloose/nerdtree'
-    Plug 'tpope/vim-pathogen'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
 endfunction
 
 " Put your costom configurations here, e.g., change the colorscheme.
 function! UserConfig()
 
     " If you enable airline layer and have installed the powerline fonts, set it here.
-    let g:airline_powerline_fonts=1
+    " let g:airline_powerline_fonts=1
     color desert
     let g:clang_format#auto_format=0
     let g:clang_format#auto_format_on_insert_leave=0
@@ -49,10 +46,12 @@ function! UserConfig()
     map <leader>a :call conque_gdb#command("info args")<CR>
     map <F6> :call conque_gdb#command("run")<CR>
     map <F7> :call conque_gdb#command("qquit")<CR>
+    map <C-w> :execute "grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR>
+    map wm :NERDTreeToggle<CR>
     set colorcolumn=80
     set mouse-=a
-    map <leader>ft :NERDTreeToggle<CR>
-    autocmd FileType c,cpp setlocal
+    set undodir=~/vimundo
+    autocmd FileType c,cpp,python setlocal
         \   tabstop=8
         \   shiftwidth=8
         \   softtabstop=8
