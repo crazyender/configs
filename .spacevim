@@ -27,6 +27,7 @@ function! UserInit()
     " Install private plugins
     " Plug 'extr0py/oni'
     Plug 'vim-scripts/Conque-GDB'
+    Plug 'scrooloose/nerdtree'
 endfunction
 
 " Put your costom configurations here, e.g., change the colorscheme.
