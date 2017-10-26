@@ -14,9 +14,11 @@ alias ls="ls --color=auto"
 alias l="ls -l"
 alias ll="ls -al"
 alias cls="clear"
+export http_proxy=http://child-prc.intel.com:913
+export https_proxy=https://child-prc.intel.com:913
 export GIT_SSH_COMMAND='ssh -oHostKeyAlgorithms=+ssh-dss'
-
-
+export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
+export COVFILE=~/test.cov
 # User specific environment and startup programs
 
 function __promp_command(){
@@ -40,7 +42,11 @@ function __promp_command(){
 	fi
 }
 
+PATH=/opt/BullseyeCoverage/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/qat_bin
 PROMPT_COMMAND=__promp_command
+LD_LIBRARY_PATH=$HOME/kernel_api:/usr/local/lib:/usr/lib:/usr/lib64:.
+export PATH
+export LD_LIBRARY_PATH
 
 
 function missing(){
@@ -60,4 +66,6 @@ function depends(){
 
 }
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+alias lock="xscreensaver-command -lock"
+
+fish
