@@ -14,8 +14,6 @@ alias ls="ls --color=auto"
 alias l="ls -l"
 alias ll="ls -al"
 alias cls="clear"
-export http_proxy=http://child-prc.intel.com:913
-export https_proxy=https://child-prc.intel.com:913
 export GIT_SSH_COMMAND='ssh -oHostKeyAlgorithms=+ssh-dss'
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 export COVFILE=~/test.cov
@@ -36,18 +34,13 @@ function __promp_command(){
 	PS1="\[\e[32m\]\u@\h\[\e[m\] \[\e[33m\]$ \w ${Branch}\[\e[m\]\n"
 
 	if [ $EXIT != 0 ]; then
-		PS1+="${Red}\$${RCol} "	
+		PS1+="${Red}\$${RCol} "
 	else
 		PS1+="${Gre}\$${RCol} "
 	fi
 }
 
-PATH=/opt/BullseyeCoverage/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/qat_bin
 PROMPT_COMMAND=__promp_command
-LD_LIBRARY_PATH=$HOME/kernel_api:/usr/local/lib:/usr/lib:/usr/lib64:.
-export PATH
-export LD_LIBRARY_PATH
-
 
 function missing(){
 	if [ -d $1 ]; then
@@ -67,5 +60,3 @@ function depends(){
 }
 
 alias lock="xscreensaver-command -lock"
-
-fish
