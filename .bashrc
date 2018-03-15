@@ -26,7 +26,7 @@ function __promp_command(){
     	local Gre='\[\e[0;32m\]'
 	local Branch=""
 	if [ -d .git ]; then
-                Branch="($(git name-rev --name-only @))"
+                Branch="($(git symbolic-ref --short -q HEAD))"
         else
                 Branch=""
         fi
