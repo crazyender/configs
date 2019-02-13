@@ -14,8 +14,11 @@ alias ls="ls --color=auto"
 alias l="ls -l"
 alias ll="ls -al"
 alias cls="clear"
+alias fzf="fzf --multi --preview='head -50 {+}'"
 export GIT_SSH_COMMAND='ssh -oHostKeyAlgorithms=+ssh-dss'
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
+export ANDROID_SDK=~/Android/Sdk
+export ANDROID_NDK=~/Android/Sdk/ndk-bundle
 export COVFILE=~/test.cov
 # User specific environment and startup programs
 
@@ -60,3 +63,6 @@ function depends(){
 }
 
 alias lock="xscreensaver-command -lock"
+export TERM="screen-256color"
+export POWERLINE_BASH_CONTINUATION=1
+export POWERLINE_BASH_SELECT=1
