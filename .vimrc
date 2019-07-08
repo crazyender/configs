@@ -1,44 +1,59 @@
-"                                           _
-"       ___ _ __   __ _  ___ ___     __   _(_)_ __ ___
-"      / __| -_ \ / _- |/ __/ _ \____\ \ / / | -_ - _ \
-"      \__ \ |_) | (_| | (_|  __/_____\ V /| | | | | | |
-"      |___/ .__/ \__._|\___\___|      \_/ |_|_| |_| |_|
-"          |_|
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'ycm-core/YouCompleteMe'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'junegunn/fzf'
+
+Plugin 'rhysd/vim-clang-format'
+
+Plugin 'google/vim-colorscheme-primary'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 "
-"   Copyright (c) 2017 Liu-Cheng Xu & Contributors
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-"   You can customize space-vim with .spacevim
-"   and don't have to take care of this file.
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 "
-"   Author: Liu-Cheng Xu <xuliuchengxlc@gmail.com>
-"   URL: https://github.com/liuchengxu/space-vim
-"   License: MIT
+" Open file in new tab
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_use_clangd = 1
+let g:ycm_clangd_uses_ycmd_caching = 0
+let g:clang_format#code_style = 'file'
+let g:clang_format#auto_format = 1
+let g:clang_format#auto_format_on_insert_leave = 1
+let g:ycm_clangd_args = ['-background-index']
+set completeopt-=preview
+set number
+set noswapfile
+colorscheme desert
+"set mouse=
+syntax on
+map wm :NERDTree<CR>
+map <M-O> :FZF<CR>
+map <C-]> :YcmCompleter GoTo<CR>
+map fs :YcmCompleter GoToReferences<CR>
+map <tab> :tabn<CR>
+map <C-LeftMouse> :YcmCompleter GoTo<CR>
 
-scriptencoding utf-8
-
-" Identify platform {
-let g:MAC = has('macunix')
-let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
-let g:WINDOWS = has('win32') || has('win64')
-" }
-
-" Windows Compatible {
-" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-" across (heterogeneous) systems easier.
-if g:WINDOWS
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-endif
-" }
-
-let g:spacevim_dir = $HOME.'/.space-vim'
-let g:spacevim_core_dir = '/core'
-let g:spacevim_version = '0.5.0'
-
-set runtimepath+=$HOME/.space-vim/core
-
-call spacevim#begin()
-
-Layer 'spacevim'
-
-call spacevim#end()
-set tabstop=8
