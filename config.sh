@@ -1,31 +1,23 @@
 #!/bin/bash
 dnf --version > /dev/null
 if [ $? -eq 0 ]; then
-    sudo dnf install clang llvm clang-libs cmake ctags cscope id-utils powerline git
+    sudo dnf install  git cmake tmux vim
 fi
 
 yum --version > /dev/null
 if [ $? -eq 0 ]; then
-    sudo yum install clang llvm clang-libs cmake ctags cscope id-utils powerline git
+    sudo yum install git cmake tmux vim 
 fi
 
 apt --version > /dev/null
 if [ $? -eq 0 ]; then
-    sudo apt install libclang-dev clang llvm cmake ctags cscope id-utils powerline git
+    sudo apt install git cmake tmux vim
 fi
 
 apt-get --version > /dev/null
 if [ $? -eq 0 ]; then
-    sudo apt-get install libclang-dev clang llvm cmake ctags cscope id-utils powerline git
+    sudo apt-get install git cmake tmux vim
 fi
-
-#curl -sLf https://spacevim.org/install.sh | bash
-pip install git+git://github.com/powerline/powerline
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-mv PowerlineSymbols.otf /usr/share/fonts 
-mv 10-powerline-symbols.conf /etc/fonts/conf.d/ 
-fc-cache -vf /usr/share/fonts/ 
 
 cp ./.tmux.conf ~/
 cp ./.gdbinit ~/

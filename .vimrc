@@ -43,7 +43,7 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:clang_format#code_style = 'file'
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_format_on_insert_leave = 1
-let g:ycm_clangd_args = ['-background-index']
+let g:ycm_clangd_args = []
 set completeopt-=preview
 set number
 set noswapfile
@@ -54,6 +54,6 @@ map wm :NERDTree<CR>
 map <M-O> :FZF<CR>
 map <C-]> :YcmCompleter GoTo<CR>
 map fs :YcmCompleter GoToReferences<CR>
-map <tab> :tabn<CR>
+map <tab> :bn<CR>
 map <C-LeftMouse> :YcmCompleter GoTo<CR>
 
