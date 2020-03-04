@@ -20,6 +20,11 @@ Plugin 'rhysd/vim-clang-format'
 
 Plugin 'google/vim-colorscheme-primary'
 
+Plugin 'jremmen/vim-ripgrep'
+
+Plugin 'dominikduda/vim_current_word'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,6 +49,11 @@ let g:clang_format#code_style = 'file'
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_format_on_insert_leave = 1
 let g:ycm_clangd_args = []
+let g:rg_format = '%f:%l:%m'
+let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
 set completeopt-=preview
 set number
 set noswapfile
@@ -51,9 +61,11 @@ colorscheme desert
 "set mouse=
 syntax on
 map wm :NERDTree<CR>
-map <M-O> :FZF<CR>
+map ff :FZF<CR>
 map <C-]> :YcmCompleter GoTo<CR>
 map fs :YcmCompleter GoToReferences<CR>
 map <tab> :bn<CR>
 map <C-LeftMouse> :YcmCompleter GoTo<CR>
+map ss :Rg --no-ignore -w <cword><CR>
+map rg :Rg --no-ignore 
 

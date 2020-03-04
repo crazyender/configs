@@ -22,7 +22,6 @@ fi
 cp ./.tmux.conf ~/
 cp ./.gdbinit ~/
 cp ./.bashrc ~/
-cp ./.gitconfig ~/ 
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
