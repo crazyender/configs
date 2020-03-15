@@ -20,6 +20,7 @@ export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 export ANDROID_SDK=~/Android/Sdk
 export ANDROID_NDK=~/Android/Sdk/ndk-bundle
 export COVFILE=~/test.cov
+stty -ixon
 # User specific environment and startup programs
 
 function __promp_command(){

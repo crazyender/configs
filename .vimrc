@@ -26,6 +26,8 @@ Plugin 'dominikduda/vim_current_word'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
+Plugin 'crazyender/tabdrop'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -64,8 +66,20 @@ map wm :NERDTree<CR>
 map ff :FZF<CR>
 map <C-]> :YcmCompleter GoTo<CR>
 map fs :YcmCompleter GoToReferences<CR>
-map <tab> :bn<CR>
+map <tab> :tabnext<CR>
+map ' :tabnext<CR>
+map ; :tabprevious<CR>
+nnoremap <c-s> :w<CR>
+inoremap <c-s> <Esc>:w<CR>a
+vnoremap <c-s> <Esc>:w<CR>
 map <C-LeftMouse> :YcmCompleter GoTo<CR>
 map ss :Rg --no-ignore -w <cword><CR>
-map rg :Rg --no-ignore 
+map rg :Rg --no-ignore
+
+let g:fzf_action = {
+  \ 'ctrl-t': ':TabDrop',
+  \ 'enter': ':TabDrop',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_buffers_jump = 1
 
