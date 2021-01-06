@@ -26,10 +26,16 @@ cp ./.bashrc ~/
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# for mtux
+git clone https://github.com/tmux-plugins/tmux-cpu.git ~/.tmux/tmux-cpu
+git clone https://github.com/xamut/tmux-network-bandwidth.git ~/.tmux/tmux-network-bandwidth
+git clone https://github.com/xamut/tmux-weather.git ~/.tmux/tmux-weather
+
 # for vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ./.vimrc ~/
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe
+git submodule update --init --recursive
 ./install.py --clang-completer --clangd-completer
 

@@ -17,8 +17,6 @@ alias cls="clear"
 alias fzf="fzf --multi --preview='head -50 {+}'"
 export GIT_SSH_COMMAND='ssh -oHostKeyAlgorithms=+ssh-dss'
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
-export ANDROID_SDK=~/Android/Sdk
-export ANDROID_NDK=~/Android/Sdk/ndk-bundle
 export COVFILE=~/test.cov
 stty -ixon
 # User specific environment and startup programs
