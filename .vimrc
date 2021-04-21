@@ -4,15 +4,18 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'ycm-core/YouCompleteMe'
-
 Plugin 'scrooloose/nerdtree'
+
+Plugin 'prabirshrestha/async.vim'
+
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plugin 'prabirshrestha/vim-lsp'
+
+Plugin 'ajh17/vimcompletesme'
 
 Plugin 'junegunn/fzf'
 
@@ -28,53 +31,44 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 
 Plugin 'crazyender/tabdrop'
 
+Plugin 'jistr/vim-nerdtree-tabs'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
-" Open file in new tab
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_use_clangd = 1
-let g:ycm_clangd_uses_ycmd_caching = 0
+
 let g:clang_format#code_style = 'file'
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_format_on_insert_leave = 1
-let g:ycm_clangd_args = []
 let g:rg_format = '%f:%l:%m'
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 let g:cpp_experimental_template_highlight = 1
+let g:nerdtree_tabs_autofind = 1
+let g:nerdtree_tabs_focus_on_files = 1
+let g:nerdtree_tabs_open_on_console_startup = 2
 set completeopt-=preview
 set number
 set noswapfile
 colorscheme desert
-"set mouse=
 syntax on
-map wm :NERDTree<CR>
+map wm :NERDTreeTabsToggle<CR>
 map ff :FZF<CR>
-map <C-]> :YcmCompleter GoTo<CR>
-map fs :YcmCompleter GoToReferences<CR>
+map <C-]> <plug>(lsp-definition)<CR>
+map fs <plug>(lsp-references)<CR>
+map fd <plug>(lsp-hover)<CR>
 map <tab> :tabnext<CR>
 map ' :tabnext<CR>
 map ; :tabprevious<CR>
 nnoremap <c-s> :w<CR>
 inoremap <c-s> <Esc>:w<CR>a
 vnoremap <c-s> <Esc>:w<CR>
-map <C-LeftMouse> :YcmCompleter GoTo<CR>
 map ss :Rg --no-ignore -w <cword><CR>
 map rg :Rg --no-ignore
+map rr :NERDTreeTabsFind<CR>
+set mouse=
+set ttymouse=
 
 let g:fzf_action = {
   \ 'ctrl-t': ':TabDrop',
@@ -83,3 +77,26 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_buffers_jump = 1
 
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+if executable('clangd-12')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd-12']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif

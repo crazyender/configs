@@ -35,7 +35,7 @@ git clone https://github.com/xamut/tmux-weather.git ~/.tmux/tmux-weather
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ./.vimrc ~/
 vim +PluginInstall +qall
-cd ~/.vim/bundle/YouCompleteMe
-git submodule update --init --recursive
-./install.py --clang-completer --clangd-completer
+# cd ~/.vim/bundle/YouCompleteMe
+# git submodule update --init --recursive
+# ./install.py --clang-completer --clangd-completer
 
